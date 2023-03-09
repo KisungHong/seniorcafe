@@ -113,7 +113,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/home_other_lesson_rv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
@@ -124,7 +124,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/other_lesson_title_tv"
             app:spanCount="2"
-            tools:listitem="@layout/item_today_lesson" />
+            tools:listitem="@layout/item_other_lesson" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
