@@ -57,12 +57,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:text="지금 바로 클래스에 가입해서\n취미를 배워보세요!"
-            android:textSize="25sp"
+            android:layout_marginTop="22dp"
+            android:text="클래스에 가입해서 취미를 배워보세요!"
             android:textStyle="bold"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ic_search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/today_lesson_category_rv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@id/lesson_title_tv"
+            tools:listitem="@layout/item_category_lesson" />
 
         <View
             android:id="@+id/lesson_line"
@@ -73,7 +84,7 @@
             android:layout_marginEnd="20dp"
             android:background="@color/grey"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lesson_title_tv" />
+            app:layout_constraintTop_toBottomOf="@id/today_lesson_category_rv" />
 
         <TextView
             android:id="@+id/today_lesson_title_tv"
