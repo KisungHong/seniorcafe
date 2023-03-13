@@ -33,7 +33,7 @@
         android:layout_height="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/background_lesson"
+        android:background="@drawable/background_badge"
         android:gravity="center"
         android:text="운동/스포츠"
         android:textColor="@color/white"

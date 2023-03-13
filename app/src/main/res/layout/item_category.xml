@@ -15,8 +15,8 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/category_cover_img_iv"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="@id/category_background"
         app:layout_constraintEnd_toEndOf="@id/category_background"
