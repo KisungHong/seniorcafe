@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seniorcafe.databinding.FragmentClubBinding
 import com.example.seniorcafe.databinding.FragmentLessonBinding
@@ -15,6 +16,7 @@ class LessonFragment : Fragment() {
     lateinit var binding : FragmentLessonBinding
     private var lessonData = ArrayList<Lesson>()
     private var categoryData = ArrayList<Category>()
+    private var otherLessonData = ArrayList<OtherLesson>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +63,28 @@ class LessonFragment : Fragment() {
         val lessonRVAdapter = LessonRVAdapter(lessonData)
         binding.todayLessonRv.adapter = lessonRVAdapter
         binding.todayLessonRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+
+        // 그 외 클래스
+        otherLessonData.apply {
+            add(OtherLesson("골 때리는 할미들","마포 메날두",R.drawable.soccer1, "운동/스포츠"))
+            add(OtherLesson("슬라이스,훅 고쳐드립니다","짭국진",R.drawable.golf2,"운동/스포츠"))
+            add(OtherLesson("손주들 입맛 사로잡는 양식","강서 고든램지",R.drawable.cook2, "요리/제조"))
+            add(OtherLesson("시니어프리미어리그(SPL)","부천 손흥민",R.drawable.soccer2, "운동/스포츠"))
+            add(OtherLesson("우리집 강아지 길들이기","안산 강형욱",R.drawable.pets2, "펫"))
+            add(OtherLesson("라운딩에 필요한 공은 단 한개","골프로",R.drawable.golf3, "운동/스포츠"))
+            add(OtherLesson("인물사진 촬영 레슨","사진애호가",R.drawable.senior1, "사진/영상"))
+            add(OtherLesson("간단하게 만드는 한끼 식사","요리왕 비룡",R.drawable.cook3, "요리/제조"))
+            add(OtherLesson("사진은 역시 흑백사진","블랙잭",R.drawable.senior2, "사진/영상"))
+            add(OtherLesson("축구 전술의 모든것","용인 퍼거슨",R.drawable.soccer3, "운동/스포츠"))
+            add(OtherLesson("인생의 동반자, 우리집 강아지 건강챙기기","Dnang Pirell",R.drawable.pets3, "펫"))
+            add(OtherLesson("흑백사진 맛집","김창욱",R.drawable.senior3, "사진/영상"))
+
+
+        }
+
+        val otherLessonRvAdapter = OtherLessonRvAdapter(otherLessonData)
+        binding.otherLessonRv.adapter = otherLessonRvAdapter
 
 
         return binding.root

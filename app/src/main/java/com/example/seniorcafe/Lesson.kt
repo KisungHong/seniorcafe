@@ -6,3 +6,10 @@ data class Lesson(
     var lessonCoverImg : Int? = null,
     var lessonBadge : String? = ""
 )
+
+data class OtherLesson(
+    var OtherLessonTitle : String? = "",
+    var OtherLessonTeacher : String? = "",
+    var OtherLessonCoverImg : Int? = null,
+    var OtherLessonBadge : String? = ""
+)
