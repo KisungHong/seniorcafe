@@ -12,13 +12,15 @@
         android:layout_height="wrap_content"
         android:iconifiedByDefault="false"
         android:paddingTop="5dp"
+        android:queryHint="검색어를 입력하세요."
         android:paddingBottom="5dp"
+        android:queryBackground="@drawable/background_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/search_result_rv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

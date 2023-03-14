@@ -1,59 +1,95 @@
 package com.example.seniorcafe
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.seniorcafe.databinding.FragmentSearchBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var searchView: SearchView
+    lateinit var searchAdapter: SearchAdapter
+    lateinit var searchData: ArrayList<CategorySearch>
+    lateinit var searchResultData: ArrayList<CategorySearch>
+    lateinit var binding: FragmentSearchBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
+
+        binding.searchResultRv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
+        searchAdapter = SearchAdapter(searchData)
+        binding.searchResultRv.adapter = searchAdapter
+
+
+
+        searchData = tempSearch()
+        getSearchResultList()
+
+        val searchViewTextListener : SearchView.OnQueryTextListener = object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(s: String?): Boolean {
+                searchAdapter.filter.filter(s)
+                return false
+
+            }
+
+        }
+        searchView = binding.searchView.findViewById(R.id.searchView)
+        searchView.setOnClickListener{
+
+            searchView.isIconified = false
+
+
+        }
+        searchView.setOnQueryTextListener(searchViewTextListener)
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SearchFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+
+    private fun tempSearch(): ArrayList<CategorySearch> {
+        var tempSearch = ArrayList<CategorySearch>()
+        tempSearch.add(CategorySearch("운동/스포츠", R.drawable.soccer1, "골 때리는 할미들","마포 메날두"))
+        tempSearch.add(CategorySearch("운동/스포츠", R.drawable.golf2, "슬라이스,훅 고쳐드립니다","짭국진"))
+        tempSearch.add(CategorySearch("요리/제조", R.drawable.cook2, "손주들 입맛 사로잡는 양식","강서 고든램지"))
+        tempSearch.add(CategorySearch("운동/스포츠", R.drawable.soccer2, "시니어프리미어리그(SPL)","부천 손흥민"))
+        tempSearch.add(CategorySearch("펫", R.drawable.pets2, "우리집 강아지 길들이기","안산 강형욱"))
+        tempSearch.add(CategorySearch("운동/스포츠", R.drawable.golf3, "라운딩에 필요한 공은 단 한개","골프로"))
+        tempSearch.add(CategorySearch("사진/영상", R.drawable.senior1, "인물사진 촬영 레슨","사진애호가"))
+        tempSearch.add(CategorySearch("요리/제조", R.drawable.cook3, "간단하게 만드는 한끼 식사","요리왕 비룡"))
+        tempSearch.add(CategorySearch("사진/영상", R.drawable.senior2, "사진은 역시 흑백사진","블랙잭"))
+        tempSearch.add(CategorySearch("운동/스포츠", R.drawable.soccer3, "축구 전술의 모든것","용인 퍼거슨"))
+        tempSearch.add(CategorySearch("펫", R.drawable.pets3, "인생의 동반자, 우리집 강아지 건강챙기기"))
+        tempSearch.add(CategorySearch("사진/영상", R.drawable.senior3, "흑백사진 맛집","김창욱"))
+
+
+        return tempSearch
     }
+
+    private fun getSearchResultList(){
+        searchResultData = arrayListOf()
+    }
+
+
+
+
 }
+
+
