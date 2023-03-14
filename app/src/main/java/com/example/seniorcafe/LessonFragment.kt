@@ -25,6 +25,15 @@ class LessonFragment : Fragment() {
     ): View? {
         binding = FragmentLessonBinding.inflate(inflater,container,false)
 
+
+        // Toolbar clickListener(fragment replace)
+        binding.icCategory.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, ViewCategoryFragment()).commitAllowingStateLoss()
+        }
+        binding.icSearch.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, SearchFragment()).commitAllowingStateLoss()
+        }
+
         // 카테고리
         categoryData.apply {
             add(Category("아웃도어/여행",R.drawable.plane))
