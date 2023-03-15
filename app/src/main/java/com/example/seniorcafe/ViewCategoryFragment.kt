@@ -25,7 +25,7 @@ class ViewCategoryFragment : Fragment() {
 
         // TODO back button : escape this window
         binding.backButton.setOnClickListener {
-            (context as MainActivity).supportFragmentManager.beginTransaction().remove(ViewCategoryFragment()).commitAllowingStateLoss()
+            (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, LessonFragment()).addToBackStack(null).commitAllowingStateLoss()
         }
 
 
