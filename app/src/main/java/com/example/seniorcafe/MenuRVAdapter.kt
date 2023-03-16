@@ -7,6 +7,16 @@ import com.example.seniorcafe.databinding.ItemMenuListBinding
 
 class MenuRVAdapter(private val menuList: ArrayList<Menu>) :
     RecyclerView.Adapter<MenuRVAdapter.ViewHolder>() {
+
+    interface MyItemClickListener {
+        fun onItemClick()
+    }
+
+    private lateinit var mItemClickListener : MyItemClickListener
+    fun setMyItemClickListener(itemClickListener : MyItemClickListener) {
+        mItemClickListener = itemClickListener
+    }
+
     inner class ViewHolder(val binding: ItemMenuListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(menu: Menu) {
@@ -24,6 +34,6 @@ class MenuRVAdapter(private val menuList: ArrayList<Menu>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(menuList[position])
-        holder.itemView.setOnClickListener {  }
+        holder.itemView.setOnClickListener { mItemClickListener.onItemClick() }
     }
 }

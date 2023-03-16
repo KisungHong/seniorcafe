@@ -24,15 +24,23 @@ class MenuFragment : Fragment() {
         // TODO button clickListener (fragment replace)
 
         menuData.apply {
-            add(Menu("♥ 찜한 클럽️/클래스"))
-            add(Menu("\uD83D\uDD0D️ 최근 본 클럽/클래스"))
+            add(Menu("♥ 찜한 클래스️/클럽"))
+            add(Menu("\uD83D\uDD0D️ 최근 본 클래스️/클럽"))
             add(Menu("\uD83D\uDCDD 내 활동 기록"))
-            add(Menu("\uD83D\uDEE0️ 클럽/클래스 만들기"))
+            add(Menu("\uD83D\uDEE0️ 클래스️/클럽 만들기"))
         }
 
         val menuRVAdapter = MenuRVAdapter(menuData)
         binding.menuListRv.adapter = menuRVAdapter
         binding.menuListRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
+
+        menuRVAdapter.setMyItemClickListener(object : MenuRVAdapter.MyItemClickListener{
+            override fun onItemClick() {
+                (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, MenuDetailFragment()).commitAllowingStateLoss()
+            }
+
+        })
+
 
         return binding.root
     }
