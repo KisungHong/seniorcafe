@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.seniorcafe.databinding.FragmentClubBinding
 import com.example.seniorcafe.databinding.FragmentMenuBinding
+import com.google.gson.Gson
 
 class MenuFragment : Fragment() {
 
@@ -35,8 +35,14 @@ class MenuFragment : Fragment() {
         binding.menuListRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,false)
 
         menuRVAdapter.setMyItemClickListener(object : MenuRVAdapter.MyItemClickListener{
-            override fun onItemClick() {
-                (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, MenuDetailFragment()).commitAllowingStateLoss()
+            override fun onItemClick(menu: Menu) {
+                (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, MenuDetailFragment().apply {
+                    arguments = Bundle().apply {
+                        val gson = Gson()
+                        val menuJson = gson.toJson(menu)
+                        putString("menu", menuJson)
+                    }
+                }).commitAllowingStateLoss()
             }
 
         })

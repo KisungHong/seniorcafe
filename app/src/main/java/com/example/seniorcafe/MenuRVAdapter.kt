@@ -9,7 +9,7 @@ class MenuRVAdapter(private val menuList: ArrayList<Menu>) :
     RecyclerView.Adapter<MenuRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener {
-        fun onItemClick()
+        fun onItemClick(menu: Menu)
     }
 
     private lateinit var mItemClickListener : MyItemClickListener
@@ -34,6 +34,6 @@ class MenuRVAdapter(private val menuList: ArrayList<Menu>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(menuList[position])
-        holder.itemView.setOnClickListener { mItemClickListener.onItemClick() }
+        holder.itemView.setOnClickListener { mItemClickListener.onItemClick(menuList[position]) }
     }
 }
