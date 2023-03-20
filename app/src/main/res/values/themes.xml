@@ -12,9 +12,17 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+<!--        <item name="windowNoTitle">true</item>-->
+<!--        <item name="android:statusBarColor"></item>-->
+<!--        <item name="android:windowTranslucentStatus">true</item>-->
     </style>
 
     <style name="Circle">
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Theme.Seniorcafe.splash" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/background_splash_screen</item>
     </style>
 </resources>
