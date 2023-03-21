@@ -1,5 +1,6 @@
 package com.example.seniorcafe
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore.Audio.Albums
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.seniorcafe.databinding.FragmentClubBinding
 import com.example.seniorcafe.databinding.FragmentLessonBinding
+import com.google.gson.Gson
 
 class LessonFragment : Fragment() {
 
@@ -73,6 +75,19 @@ class LessonFragment : Fragment() {
         binding.todayLessonRv.adapter = lessonRVAdapter
         binding.todayLessonRv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
+        lessonRVAdapter.setLessonRVClickListener(object : LessonRVAdapter.LessonRVClickListener{
+            override fun onItemClick(lesson: Lesson) {
+                (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm, PostItFragment().apply {
+                    arguments = Bundle().apply {
+                        val gson = Gson()
+                        val lessonJson = gson.toJson(lesson)
+                        putString("lesson", lessonJson)
+
+                    }
+                }).commitAllowingStateLoss()
+            }
+
+        })
 
         // 그 외 클래스
         otherLessonData.apply {

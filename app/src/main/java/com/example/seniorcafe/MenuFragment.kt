@@ -21,7 +21,6 @@ class MenuFragment : Fragment() {
     ): View? {
         binding = FragmentMenuBinding.inflate(inflater,container,false)
 
-        // TODO button clickListener (fragment replace)
 
         menuData.apply {
             add(Menu("♥ 찜한 클래스️/클럽"))
