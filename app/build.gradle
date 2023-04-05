@@ -11,6 +11,10 @@ android {
         enabled = true
     }
 
+    buildFeatures{
+        dataBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.seniorcafe"
         minSdk 22
