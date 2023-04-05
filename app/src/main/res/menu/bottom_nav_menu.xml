@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/homeFragment"
+        android:id="@+id/lessonFragment"
         android:icon="@drawable/ic_bottom_class_no_select"
         app:showAsAction="always"
         android:enabled="true"
         android:title="배워봐요"
         tools:ignore="AlwaysShowAction" />
     <item
-        android:id="@+id/lookFragment"
+        android:id="@+id/clubFragment"
         android:icon="@drawable/ic_bottom_club_no_select"
         app:showAsAction="always"
         android:title="함께해요" />
     <item
-        android:id="@+id/searchFragment"
+        android:id="@+id/menuFragment"
         android:icon="@drawable/ic_bottom_menu_no_select"
         app:showAsAction="always"
         android:title="내활동" />

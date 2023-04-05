@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.seniorcafe.databinding.FragmentMenuDetailBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
+import org.jetbrains.annotations.Contract
 
 class MenuDetailFragment : Fragment() {
     lateinit var binding : FragmentMenuDetailBinding
